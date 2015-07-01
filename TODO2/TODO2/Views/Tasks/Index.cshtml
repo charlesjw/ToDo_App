@@ -12,7 +12,8 @@
          <input type="submit" value="Filter Results" />
          <input type="submit" value="Reset Filter" />
          </p> 
-        }
+        }
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -20,7 +21,7 @@
 <table>
     <tr>
         <th>
-            @Html.Label("Task Title")
+            @Html.DisplayNameFor(model => model.TaskHeader)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Deadline)

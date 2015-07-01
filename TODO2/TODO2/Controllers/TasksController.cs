@@ -67,9 +67,13 @@ namespace TODO.Controllers
         [HttpPost]
         public ActionResult Create(TaskModel taskmodel)
         {
-            if (taskmodel.Username == null)
+            if (taskmodel.Username == null && User.Identity.Name != "")
             {
                 taskmodel.Username = User.Identity.Name;
+            }
+            else
+            {
+                return RedirectToAction("Index");
             }
             if (ModelState.IsValid)
             {
