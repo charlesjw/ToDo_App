@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TODO.Models.TaskModel>
+
+@{
+    ViewBag.Title = User.Identity.Name + "'s Task List";
+}
+
+<h2>@Html.DisplayName(User.Identity.Name)'s Task List</h2>
+
+    @using (Html.BeginForm("Index","Tasks",FormMethod.Get)){    
+         <p> Show me Tasks that must be completed on or before: <br />   
+         <input class="text-box single-line" data-val="true" data-val-date="The field Deadline must be a date." data-val-required="The Deadline field is required." id="date" name="date" type="date" value=""/>
+         <input type="submit" value="Filter Results" />
+         <input type="submit" value="Reset List" />
+         </p> 
+        }
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table>
+    <tr>
+        <th>
+            @Html.Label("Task Title")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deadline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskHeader)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deadline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

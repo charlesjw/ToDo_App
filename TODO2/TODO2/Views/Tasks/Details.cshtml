@@ -1,0 +1,30 @@
+﻿@model TODO.Models.TaskModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TaskModel</legend>
+
+    <h2>@Html.Label("Task Title")</h2>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TaskHeader)
+    </div>
+
+    <h2>@Html.DisplayNameFor(model => model.Deadline)</h2>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Deadline)
+    </div>
+
+    <h2>@Html.DisplayNameFor(model => model.Description)</h2>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
